@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+    text-align: center;
+    background-size: cover;
+    background-position: center
+}
+
+#Heading {
+    font-size: 23px;
+    width: 100%;
+    margin: 0px
+}
+
+#Heading span {
+    color: black;
+    font-size: 20px
+}
+
+#Status, #BabyStatus {
+    font-size: 18px
+}
+
+canvas {
+    box-shadow: 10px 10px 10px gray;
+    border-radius: 10px
+}
