@@ -18,6 +18,7 @@ function setup() {
 function draw() {
     image(Video, 0, 0, 500, 375)
     if (Status != "") {
+        ObjectDetector.detect(Video, GetResults)
         for (var i = 0; i < Objects.length; i++) {
             document.getElementById("Status").innerHTML = "Status: Objects Detected"
             fill("#FF0000")
@@ -29,11 +30,13 @@ function draw() {
             if (Objects[i].label == "person") {
                 document.getElementById("BabyStatus").innerHTML = "Baby Found"
                 Alarm.stop()
-            } else if (Objects[i].label != "person") {
+            }
+            if (Objects[i].label != "person") {
                 document.getElementById("BabyStatus").innerHTML = "Baby Not Found"
                 Alarm.play()
                 Alarm.loop()
-            } else if (Objects.length == 0) {
+            }
+            if (Objects.length == 0) {
                 document.getElementById("BabyStatus").innerHTML = "Baby Not Found"
                 Alarm.play()
                 Alarm.loop()
@@ -45,7 +48,6 @@ function draw() {
 function ModelLoaded() {
     console.log("Model Loaded!")
     Status = true
-    ObjectDetector.detect(Video, GetResults)
 }
 
 function GetResults(Error, Results) {
